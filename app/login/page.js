@@ -1,24 +1,17 @@
 "use client"
 import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 const Login = () => {
     const { data: session } = useSession()
-    if (session) {
-        return (
-            <div className="h-[60vh] flex flex-col items-center justify-center gap-6 m-3">
-                <div className="flex text-white gap-0 items-center justify-center text-xl md:text-5xl font-bold">
-                    You are already logged in as {session.user.name}
-                </div>
-                <button
-                    onClick={() => signOut()}
-                    className="hidden md:inline-flex text-white bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 "
-                >
-                    Logout
-                </button>
-            </div>
-        )
-    }
+    const router = useRouter()
+    useEffect(() => {
+        if (session) {
+            router.push('/dashboard')
+        }
+    }, [session, router])
     return (
         <div className="h-[60vh] flex flex-col items-center justify-center gap-20 m-3">
             <div className="flex text-white gap-0 items-center justify-center text-xl md:text-5xl font-bold">
