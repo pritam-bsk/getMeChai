@@ -21,6 +21,5 @@ It allows creators, developers, and individuals to receive small contributions f
 - **Styling:** TailwindCSS  
 - **Database:** MongoDB
 - **Payments:** Razorpay API  
-- **Deployment:** Vercel (recommended)
 
 ---
